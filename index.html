@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html xmlns:wb="http://open.weibo.com/wb" lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Red Programming Language</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="The world's first full-stack programming language">
+    <link href="static/bootstrap-combined.min.css" rel="stylesheet">
+    <link href="static/app.css" rel="stylesheet">
+    <link href="static/app-theme.css" rel="stylesheet">
+   <!-- <link href="http://fonts.useso.com/css?family=Roboto:600,400,300" rel="stylesheet" type="text/css">-->
+	<script src="http://tjs.sjs.sinajs.cn/open/api/js/wb.js" type="text/javascript" charset="utf-8"></script>
+    <!--[if lt IE 9]><script src="static/html5shiv.min.js"></script><![endif]-->
+    <!-- Added Baidu Analytics -->
+	<script>
+	var _hmt = _hmt || [];
+	(function() {
+	  var hm = document.createElement("script");
+	  hm.src = "//hm.baidu.com/hm.js?7b7e95fa9956a7c090c1d68887f3fe8c";
+	  var s = document.getElementsByTagName("script")[0]; 
+	  s.parentNode.insertBefore(hm, s);
+	})();
+	</script>
+  </head>
+  <body data-target=".content-nav">
+    <header>
+      <div class="container">
+        <div class="row">
+          <div class="span5">
+            <h1><img src="static/red-logo.png" alt="Square"/>&nbsp;Red</h1>
+          </div>
+          <div class="span7">
+            <menu>
+              <ul>
+                <li><a href="#download" class="menu download">Download v0.5.4</a></li>
+                <li><a href="http://github.com/red/red" data-title="View GitHub Project" class="menu github"><img src="static/icon-github.png" alt="GitHub"/></a></li>
+                <li><a href="http://www.red-lang.org/" data-title="Offical Blog" class="menu square"><img src="static/icon-square.png" alt="Blog"/></a></li>
+              </ul>
+            </menu>
+          </div>
+      </div>
+    </header>
+    <section id="subtitle">
+      <div class="container">
+        <div class="row">
+          <div class="span12">
+            <h2>The world's <strong>first full-stack</strong> programming language</h2>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section id="body">
+      <div class="container">
+        <div class="row">
+          <div class="span9">
+            <h3 id="introduction">Introduction</h3>
+            <p><span style="color: red">R</span>ed is a new programming language,&nbsp;strongly inspired by&nbsp;<a href="http://rebol.com/">REBOL</a>, but with a broader field of usage thanks to its native-code compiler, from system programming to high-level scripting, while providing modern support for concurrency and multi-core CPUs.</p>
+            <p>Main characteristics are:</p>
+			<ul>
+				<li>Functional, imperative and symbolic</li>
+				<li>Prototype-based object support</li>
+				<li><a href="http://en.wikipedia.org/wiki/Homoiconicity">Homoiconic</a>&nbsp;(<span style="color: red">R</span>ed is its own meta-language)</li>
+				<li>Optionally typed, rich set of datatypes (50+)</li>
+				<li>Both statically and JIT-compiled to native code</li>
+				<li>Concurrency and parallelism strong support (actors, parallel collections)</li>
+				<li>Low-level system programming abilities through the built-in <span style="color: red;">R</span>ed/System <a href="http://en.wikipedia.org/wiki/Domain-specific_language">DSL</a></li>
+				<li>High-level scripting and <a href="http://en.wikipedia.org/wiki/Read-eval-print_loop">REPL</a> console support</li>
+				<li>Highly embeddable</li>
+				<li>Low memory footprint, garbage collected</li>
+				<li>Low disk footprint (&lt; 1MB)</li>
+			</ul>
+
+            <h4>Making a Red "Hello World"</h4>
+				<p>The Red toolchain comes as a single <b>half-megabyte</b> executable file that you can download from <a href="#download">here</a> for the big-3 platforms. </p>
+				<ol>
+				<li><p>Put the downloaded <b>red</b> binary in a folder that's in the PATH, or just in the working folder.</p></li>
+				<li>
+				<p>In a code or text editor, write the following Hello World program:</p>
+
+				<pre class="prettyprint"><code>Red [
+    Title: "Simple hello world script"
+]
+
+print "Hello World!"</code></pre>
+				</li>
+				<li><p>Save it under the name: <b>hello.red</b></p></li>
+				<li>
+				<p>From a terminal (works from DOS too), run it with:</p>
+
+				<pre><code>$ red hello.red</code></pre>
+				</li>
+				<li><p>You should see the Hello World! output.</p></li>
+				<li>
+				<p>Want to generate a compiled executable from that program?</p>
+
+				<pre><code>$ red -c hello.red
+$ ./hello</code></pre>
+				</li>
+				<li>
+				<p>Want to cross-compile to another supported platform?</p>
+
+				<pre><code>$ red -t Windows hello.red
+$ red -t Darwin hello.red
+$ red -t Linux-ARM hello.red</code></pre>
+				</li>
+				</ol>
+
+            <h3 id="download">Download</h3>
+            <p><a href="http://static.red-lang.org/dl/win/red-054.exe" class="dl version-href">&darr; Windows</a>&nbsp;&nbsp;
+            <a href="http://static.red-lang.org/dl/linux/red-054" class="dl version-href">&darr; GNU/Linux</a>&nbsp;&nbsp;
+            <a href="http://static.red-lang.org/dl/mac/red-054" class="dl version-href">&darr; Mac OS X</a></p>
+            <h4>Note for Linux</h4>
+            <p>For Linux 64-bit distros, you need to install 32-bit supporting libraries. So, for Debian-based distros, install them using:</p>
+<pre><code>$ sudo apt-get install ia32-libs libc6-i386</code></pre>
+			<p>If you are using a Debian 7+ or Ubuntu 13.10+ version, you should use the multiarch way:</p>
+<pre><code>$ dpkg --add-architecture i386
+$ apt-get update
+$ apt-get install libc6:i386</code></pre>
+
+            <h3 id="contributing">Contributing</h3>
+            <p>There is a lot to do on a project like this, so all people willing to help are welcome. The project is still in its early stage of development, so do not expect a stable context, we are moving forward as fast as possible.</p>
+            <p>We've just begun using the "Trello" organizational tool to make a board of cards that are <a href="https://trello.com/b/tCypaglW/ideas-for-red-contributors" target="_blank">Ideas for Red Contributors</a>.  So go look at that, as it will likely come to be updated more frequently than this page!</p>
+            <p>But speaking generally, if you want to contribute at the source code level:</p>
+            <ul>
+				<li>We are at the bootstrapping phase, the whole compilation tool-chain is written in <a href="http://www.rebol.com/" target="_blank">Rebol v2</a>, so knowing this language is mandatory to make contribution to the compiler or linker. The good thing is: as <span style="color: red">R</span>ed will be very close to Rebol's syntax, your newly acquired knowledge will not be lost...and will help you be operational on <span style="color: red">R</span>ed at soon as it will be available.</li>
+				<li>The low-level <span style="color: red">R</span>ed/System DSL is at beta stage, but we still need:</li>
+					<ul>
+						<li>testing: writing small apps, reporting issues, writing more unit tests,...</li>
+						<li>bindings to useful low-level libraries</li>
+						<li>larger applications (to help improve <span style="color: red">R</span>ed/System's programming-in-the-large abilities)</li>
+					</ul>
+				<li>Install Git, learn how to use it (we can help for that), and open a <a href="https://github.com" target="_blank">Github</a> account, then fork the <a href="https://github.com/red/red" target="_blank"><span style="color: red">R</span>ed project repository</a>. When you are ready to propose some new source code or patches, send a pull request.</li>
+            </ul>
+            <p>But working on the codebase itself isn't the only help we need.  Notice that this website is not very fancy?  We're in the midst of migrating the content out of blogger and doing a custom rebuild, here's a <a href="http://red.reb4.me/" target="_blank">test deployment</a> of the scrape.  It's just a start...are you a HTML+CSS master, can you help us make it better?  Our hope is to shift the whole thing to be maintained in GitHub, the way ruby-lang does it.</p>
+            <p>If you want to join the party, contact us through one of the preferred ways listed above, or drop an email to: contrib (at) red-lang.org</p>
+          </div>
+          <div class="span3">
+            <div class="content-nav" data-spy="affix" data-offset-top="80">
+              <ul class="nav nav-tabs nav-stacked primary">
+                <li><a href="#introduction">Introduction</a></li>
+                <li><a href="#download">Download</a></li>
+                <li><a href="red-auto/Function-Dictionary/index.html">Documentation</a></li>
+                <li><a href="#contributing">Contributing</a></li>
+              </ul>
+              <ul class="nav nav-pills nav-stacked secondary">
+                <li><a href="http://groups.google.com/group/red-lang?hl=en">Mailing-List</a></li>
+                <li><a href="http://chat.stackoverflow.com/rooms/291/rebol-and-red">Chat Room</a></li>
+                <li><a href="http://chat.stackoverflow.com/rooms/50258/red-development-team">Development Room</a></li>
+                <li><a href="https://gitter.im/red/red?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge"><img src="https://badges.gitter.im/Join%20Chat.svg" alt="GITTER JOIN CHAT" /></a></li>
+                <li><a><wb:follow-button uid="5379280974" type="red_2" width="136" height="24"></wb:follow-button></a></li>
+                <li><a><img src="https://travis-ci.org/red/red.svg?branch=master" alt="" /></a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="span12 logo">
+        	Hosted by <a href="http://pages.github.com">Pages</a>.
+          </div>
+        </div>
+      </div>
+    </section>
+    <script src="http://ajax.useso.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <script src="static/bootstrap.min.js"></script>
+    <script src="static/jquery.smooth-scroll.min.js"></script>
+    <script src="static/jquery-maven-artifact.min.js"></script>
+    <script src="static/prettify.js"></script>
+    <script type="text/javascript">
+      $(function() {
+        // Syntax highlight code blocks.
+        prettyPrint();
+
+        // Spy on scroll position for real-time updating of current section.
+        $('body').scrollspy();
+
+        // Use smooth-scroll for internal links.
+        $('a').smoothScroll();
+
+        // Enable tooltips on the header nav image items.
+        $('.menu').tooltip({
+          placement: 'bottom',
+          trigger: 'hover',
+          container: 'body',
+          delay: {
+            show: 500,
+            hide: 0
+          }
+        });
+
+        // Look up the latest version of the library.
+        //$.fn.artifactVersion('com.squareup.picasso', 'picasso', function(version, url) {
+        //  $('.version').text(version);
+        //  $('.version-tag').text('v' + version);
+        //  $('.version-href').attr('href', url);
+        //});
+      });
+    </script>
+  </body>
+</html>
