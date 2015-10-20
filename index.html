@@ -21,26 +21,6 @@
 	  s.parentNode.insertBefore(hm, s);
 	})();
 	</script>
-    <script>
-        function show_FunctionDictionary(){
-            $("#mbody").hide();
-            $("#StatisticsCodeLines").hide();
-            $("#FunctionDictionary").show();
-        }
-        function hide_FunctionDictionary(){
-            $("#mbody").show();
-            $("#FunctionDictionary").hide();
-        }
-        function show_StatisticsCodeLines(){
-            $("#mbody").hide();
-            $("#FunctionDictionary").hide();
-            $("#StatisticsCodeLines").show();
-        }
-        function hide_StatisticsCodeLines(){
-            $("#mbody").show();
-            $("#StatisticsCodeLines").hide();
-        }
-    </script>
   </head>
   <body data-target=".content-nav">
     <header>
@@ -160,8 +140,8 @@ $ apt-get install libc6:i386</code></pre>
                 <li><a href="#introduction">Introduction</a></li>
                 <li><a href="#download">Download</a></li>
                 <li><a href="#contributing">Contributing</a></li>
-                <li><a href="#Function-Dictionary"   onclick="show_FunctionDictionary();return false;">Documentation</a></li>
-                <li><a href="#Statistics-Code-Lines" onclick="show_StatisticsCodeLines();return false;">Statistics</a></li>               
+                <li><a id="a_FunctionDictionary"  href="#Function-Dictionary"   onclick="show_FunctionDictionary();return false;">Documentation</a></li>
+                <li><a id="a_StatisticsCodeLines" href="#Statistics-Code-Lines" onclick="show_StatisticsCodeLines();return false;">Statistics</a></li>               
               </ul>
               <ul class="nav nav-pills nav-stacked secondary">
                 <li><a href="http://groups.google.com/group/red-lang?hl=en">Mailing-List</a></li>
@@ -174,7 +154,7 @@ $ apt-get install libc6:i386</code></pre>
             </div>
           </div>
         </div>
-        <div id="FunctionDictionary" class="row">
+        <div id="div_FunctionDictionary" class="row">
 <a style="padding-top:70px;position:absolute;left:50%;" href="#back" onclick="hide_FunctionDictionary();return false;">Back</a>
 <iframe src="red-auto/Function-Dictionary/index.html" id="iframe1" onload="
 var ifrm = this;
@@ -184,10 +164,11 @@ function SetCwinHeight(obj){
 };
 SetCwinHeight(ifrm);
 window.addEventListener('resize', function(){SetCwinHeight(ifrm);}, false);
+$('#a_FunctionDictionary').show();
 " width="100%" height="1px" marginwidth="0" marginheight="0" scrolling="No" frameborder="0">
 </iframe>
         </div>
-        <div id="StatisticsCodeLines" class="row">
+        <div id="div_StatisticsCodeLines" class="row">
 <a style="padding-top:70px;position:absolute;left:50%;" href="#back" onclick="hide_StatisticsCodeLines();return false;">Back</a>
 <iframe src="red-auto/Statistics-Code-Lines/index.html" id="iframe2" onload="
 var ifrm = this;
@@ -197,6 +178,7 @@ function SetCwinHeight(obj){
 };
 SetCwinHeight(ifrm);
 window.addEventListener('resize', function(){SetCwinHeight(ifrm);}, false);
+$('#a_StatisticsCodeLines').show();
 " width="100%" height="1px" marginwidth="0" marginheight="0" scrolling="No" frameborder="0">
 </iframe>
         </div>
@@ -240,9 +222,38 @@ window.addEventListener('resize', function(){SetCwinHeight(ifrm);}, false);
         //  $('.version-tag').text('v' + version);
         //  $('.version-href').attr('href', url);
         //});
+      });
+    </script>
+    <script>
+        function fire_resize(window){
+            var evt = window.document.createEvent('UIEvents'); 
+            evt.initUIEvent('resize', true, false, window, 0); 
+            window.dispatchEvent(evt);
+        }
+        function show_FunctionDictionary(){
+            $('#mbody').hide();
+            $('#div_StatisticsCodeLines').hide();
+            $('#div_FunctionDictionary').show();
+            fire_resize(window);
+        }
+        function hide_FunctionDictionary(){
+            $('#mbody').show();
+            $('#div_FunctionDictionary').hide();
+        }
+        function show_StatisticsCodeLines(){
+            $('#mbody').hide();
+            $('#div_FunctionDictionary').hide();
+            $('#div_StatisticsCodeLines').show();
+            fire_resize(window);
+        }
+        function hide_StatisticsCodeLines(){
+            $('#mbody').show();
+            $('#div_StatisticsCodeLines').hide();
+        }
         hide_FunctionDictionary();
         hide_StatisticsCodeLines();
-      });
+        $('#a_FunctionDictionary').hide();
+        $('#a_StatisticsCodeLines').hide();
     </script>
   </body>
 </html>
