@@ -210,15 +210,22 @@ function aclick() {
         iframeLoadFile(aryFilename, function (fileName, fileContext) {
             innerDoc.body.children[0].innerHTML = fileContext;
             iframe1.contentWindow._strapdown(iframe1.contentWindow, innerDoc);
-            var evt = window.document.createEvent('UIEvents'); 
-            evt.initUIEvent('resize', true, false, window, 0); 
-            window.dispatchEvent(evt);
+            fire_resize(window);
+            if (window.parent) {
+                fire_resize(window.parent);
+            }
+            
         }, function (_aryFilename) {
             //alert(_aryFilename.length + ' files loaded');
         }
         , true);
     }
     return false;
+}
+function fire_resize(window){
+    var evt = window.document.createEvent('UIEvents'); 
+    evt.initUIEvent('resize', true, false, window, 0); 
+    window.dispatchEvent(evt);
 }
 </script>
 
@@ -378,27 +385,6 @@ function calculateTag() {
   </head>
 
   <body>
-    <nav class="navbar navbar-fixed-top navbar-inverse">
-      <div class="container">
-        <div class="navbar-header">
-          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-          <a class="navbar-brand" href="#">Red Function Dictionary</a>
-        </div>
-        <div style="height: 0.8px;" aria-expanded="false" id="navbar" class="navbar-collapse collapse">
-          <ul class="nav navbar-nav">
-            <li class="active"><a href="#">Home</a></li>
-            <li><a href="#about">About</a></li>
-            <li><a href="#contact">Contact</a></li>
-          </ul>
-        </div><!-- /.nav-collapse -->
-      </div><!-- /.container -->
-    </nav><!-- /.navbar -->
-
     <div class="container">
 
       <div class="row row-offcanvas row-offcanvas-right">
@@ -452,11 +438,6 @@ window.addEventListener('resize', function(){SetCwinHeight(ifrm);}, false);
       </div><!--/row-->
 
       <hr>
-
-      <footer>
-        <p>© FullStack 2015</p>
-      </footer>
-
     </div><!--/.container-->
 
 
