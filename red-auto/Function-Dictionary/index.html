@@ -205,6 +205,9 @@ function aclick() {
             }
             else {
                 document.getElementById(attr[i]).innerHTML = unencodeHtml(extra1).replace(/\r\n/g, '<br/>').replace(/\r/g, '<br/>').replace(/\n/g, '<br/>').replace(/\t/g, '&nbsp;&nbsp;&nbsp;&nbsp;');
+            	if (attr[i] == 'tags') {
+	            	document.getElementById(attr[i]).innerHTML = document.getElementById(attr[i]).innerHTML.replace(/\|/g, ',');
+	            }
             }
         }
     }
