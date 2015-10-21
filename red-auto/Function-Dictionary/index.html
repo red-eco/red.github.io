@@ -147,6 +147,9 @@ function toggle(value) {
         document.getElementById('div_hint').style.display = 'block';
         document.getElementById('div_content').style.display = 'none';
     }
+    if (window.parent) {
+        fire_resize(window.parent);
+    }
 }
 function encodeHtml(html) {
     return document.createElement('a').appendChild(document.createTextNode(html)).parentNode.innerHTML;
